@@ -1,16 +1,17 @@
 import React, {useEffect, useState} from 'react';
-import {SafeAreaView, StatusBar, View, Text} from 'react-native';
+import {SafeAreaView, StatusBar, View} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
-import {Input, List} from '../Components';
+import {Input, List, Text} from '../Components';
 import {getRecipeList} from '../api';
 import {debounce} from '../helpers';
+import {RED} from '../constants/colors';
 import styles from './styles';
 
 const App = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [recipes, setRecipes] = useState([]);
-  const debouncedSearchTerm = debounce(searchTerm, 300);
+  const debouncedSearchTerm = debounce(searchTerm, 500);
   const [isSearching, setIsSearching] = useState(false);
 
   useEffect(() => {
@@ -33,21 +34,19 @@ const App = () => {
     });
   };
 
-  MyStatusBar = () => {
-    let height;
+  RedStatusBar = () => {
+    let height = 20;
     const hasNotch = DeviceInfo.hasNotch();
-    hasNotch ? (height = 44) : 20;
-    height = 20;
     if (hasNotch) {
       height = 45;
     }
 
     return (
-      <View style={{height, backgroundColor: 'red'}}>
+      <View style={{height, backgroundColor: RED}}>
         <StatusBar
           barStyle="light-content"
           translucent={true}
-          backgroundColor={'red'}
+          backgroundColor={RED}
         />
       </View>
     );
@@ -55,7 +54,7 @@ const App = () => {
 
   return (
     <>
-      <MyStatusBar />
+      <RedStatusBar />
       <View style={styles.header}>
         <Text style={styles.title}>Recipe Puppy</Text>
         <Input

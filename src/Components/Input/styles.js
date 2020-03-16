@@ -1,20 +1,22 @@
 import {StyleSheet} from 'react-native';
 
+import {DARK_TEXT, WHITE} from '../../constants/colors';
+
 export default StyleSheet.create({
   container: {
     alignSelf: 'stretch',
   },
   input: {
-    backgroundColor: 'white',
+    backgroundColor: WHITE,
     padding: 10,
     alignSelf: 'stretch',
     paddingRight: 40,
-    color: '#1f1f1f',
+    color: DARK_TEXT,
     marginHorizontal: 10,
     marginTop: 20,
     marginBottom: 10,
     fontSize: 16,
-    backgroundColor: 'white',
+    backgroundColor: WHITE,
     height: 50,
     borderRadius: 10,
   },

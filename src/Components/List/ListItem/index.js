@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {View, Image, TouchableOpacity} from 'react-native';
 
+import Text from '../../Text';
 import {arrow, recipe} from '../../../../assets/img/';
 import styles from './styles';
 
@@ -81,7 +82,12 @@ const Recipe = ({thumbnail, title, ingredients = ''}) => {
       onPress={() => {
         setExpanded(!expanded);
       }}
-      style={[styles.container, expanded ? {height: null} : {height: 80}]}>
+      style={[
+        styles.container,
+        {
+          height: expanded ? null : 80,
+        },
+      ]}>
       <View style={styles.topContainer}>
         <Image style={styles.image} source={source} />
         <Text style={styles.title}>{title}</Text>

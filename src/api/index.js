@@ -1,4 +1,4 @@
-import {BASE_URL} from '../constants';
+import {BASE_URL} from '../constants/api';
 import {transormResponse} from './transform';
 
 export async function getRecipeList(searchParameter) {

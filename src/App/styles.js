@@ -1,5 +1,7 @@
 import {StyleSheet} from 'react-native';
 
+import {RED, WHITE} from '../constants/colors';
+
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -9,11 +11,11 @@ export default StyleSheet.create({
     paddingHorizontal: 34,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'red',
+    backgroundColor: RED,
   },
   title: {
-    color: 'white',
-    fontSize: 20,
+    color: WHITE,
+    fontSize: 22,
     fontWeight: '700',
   },
 });

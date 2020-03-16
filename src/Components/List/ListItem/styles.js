@@ -1,16 +1,18 @@
 import {StyleSheet} from 'react-native';
 
+import {GREY, WHITE, BLACK} from '../../../constants/colors';
+
 export default StyleSheet.create({
   container: {
     paddingHorizontal: 20,
     alignSelf: 'stretch',
     height: 90,
     paddingVertical: 10,
-    shadowColor: '#000',
+    shadowColor: BLACK,
     shadowRadius: 6,
     shadowOffset: {height: 2, width: 0},
     shadowOpacity: 0.3,
-    backgroundColor: 'white',
+    backgroundColor: WHITE,
     marginVertical: 10,
     marginHorizontal: 20,
     borderRadius: 10,
@@ -30,13 +32,11 @@ export default StyleSheet.create({
     fontSize: 16,
     textAlign: 'left',
     fontWeight: '600',
-    fontFamily: 'Avenir',
-    color: '#1f1f1f',
   },
   ingredients: {
     fontWeight: 'bold',
     fontSize: 12,
-    color: 'grey',
+    color: GREY,
     marginTop: 10,
     marginBottom: 5,
   },
@@ -53,11 +53,9 @@ export default StyleSheet.create({
     padding: 8,
     height: 32,
     borderRadius: 16,
-    borderColor: 'red',
     borderWidth: 1,
   },
   ingredient: {
-    color: 'red',
     overflow: 'scroll',
     padding: 0,
     fontSize: 12,
