@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Text, View, Image, TouchableOpacity} from 'react-native';
 
 import {arrow, recipe} from '../../../../assets/img/';
@@ -18,13 +18,68 @@ function radomColorGenerator() {
   };
 }
 
-const Recipe = ({thumbnail, title, ingredients = []}) => {
-  const [expanded, expand] = useState(false);
+function renderIngredients(colorfulIngredients) {
+  return (
+    <>
+      <Text style={styles.ingredients}>Ingredients: </Text>
+
+      <View style={styles.ingredientsContainer}>
+        {colorfulIngredients.map(function renderIngredient(
+          colorfulIngredient,
+          index,
+        ) {
+          const {
+            ingredient,
+            borderColor,
+            textColor,
+            backgroundColor,
+          } = colorfulIngredient;
+          return (
+            <View
+              style={[
+                styles.ingredientContainer,
+                {
+                  backgroundColor,
+                  borderColor,
+                },
+              ]}
+              key={index}>
+              <Text style={[styles.ingredient, {color: textColor}]}>
+                {ingredient}
+              </Text>
+            </View>
+          );
+        })}
+      </View>
+    </>
+  );
+}
+
+const Recipe = ({thumbnail, title, ingredients = ''}) => {
+  const [expanded, setExpanded] = useState(false);
+  const [colorfulIngredients, setColorfulIngredients] = useState([]);
+
   const source = thumbnail === '' ? recipe : {uri: thumbnail};
+
+  useEffect(() => {
+    const colorfulIngredients = ingredients
+      .split(',')
+      .map(function tranformIngredient(ingredient) {
+        const {color, opacityColor} = radomColorGenerator();
+        return {
+          ingredient,
+          borderColor: color,
+          textColor: color,
+          backgroundColor: opacityColor,
+        };
+      });
+    setColorfulIngredients(colorfulIngredients);
+  }, [title]); // This is done to avoid calling render colors multiple times, now render colors will be called each time the item changes
+
   return (
     <TouchableOpacity
       onPress={() => {
-        expand(!expanded);
+        setExpanded(!expanded);
       }}
       style={[styles.container, expanded ? {height: null} : {height: 80}]}>
       <View style={styles.topContainer}>
@@ -35,34 +90,7 @@ const Recipe = ({thumbnail, title, ingredients = []}) => {
           source={arrow}
         />
       </View>
-      {expanded && (
-        <>
-          <Text style={styles.ingredients}>Ingredients: </Text>
-
-          <View style={styles.ingredientsContainer}>
-            {ingredients
-              .split(',')
-              .map(function renderIngredient(ingredient, index) {
-                const {color, opacityColor} = radomColorGenerator();
-                return (
-                  <View
-                    style={[
-                      styles.ingredientContainer,
-                      {
-                        backgroundColor: opacityColor,
-                        borderColor: color,
-                      },
-                    ]}
-                    key={index}>
-                    <Text style={[styles.ingredient, {color}]}>
-                      {ingredient}
-                    </Text>
-                  </View>
-                );
-              })}
-          </View>
-        </>
-      )}
+      {expanded && renderIngredients(colorfulIngredients)}
     </TouchableOpacity>
   );
 };
