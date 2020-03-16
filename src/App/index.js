@@ -13,6 +13,7 @@ const App = () => {
   const [recipes, setRecipes] = useState([]);
   const debouncedSearchTerm = debounce(searchTerm, 500);
   const [isSearching, setIsSearching] = useState(false);
+  const [failedToGetInfo, setFailedToGetInfo] = useState(false);
 
   useEffect(() => {
     getRecipes('Bread');
@@ -29,9 +30,25 @@ const App = () => {
 
   getRecipes = searchTerm => {
     getRecipeList(searchTerm).then(data => {
+      setFailedToGetInfo(data === null);
       setIsSearching(false);
       setRecipes(data);
     });
+  };
+
+  renderList = () => {
+    if (failedToGetInfo) {
+      return (
+        <>
+          <Text style={styles.failedText}>Failed to Retrieve Recipes.</Text>
+          <Text style={{...styles.failedText, marginTop: 0}}>
+            Please try searching again.
+          </Text>
+        </>
+      );
+    } else {
+      return <List recipes={recipes} />;
+    }
   };
 
   RedStatusBar = () => {
@@ -66,9 +83,7 @@ const App = () => {
           loading={isSearching}
         />
       </View>
-      <SafeAreaView style={styles.container}>
-        <List recipes={recipes} />
-      </SafeAreaView>
+      <SafeAreaView style={styles.container}>{renderList()}</SafeAreaView>
     </>
   );
 };

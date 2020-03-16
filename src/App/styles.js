@@ -18,4 +18,11 @@ export default StyleSheet.create({
     fontSize: 22,
     fontWeight: '700',
   },
+  failedText: {
+    alignSelf: 'stretch',
+    textAlign: 'center',
+    marginTop: 40,
+    fontSize: 16,
+    marginHorizontal: 40,
+  },
 });
