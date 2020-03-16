@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 
-import {RED, WHITE} from '../constants/colors';
+import {RED, WHITE, DARK_TEXT} from '../constants/colors';
 
 export default StyleSheet.create({
   container: {
@@ -24,5 +24,12 @@ export default StyleSheet.create({
     marginTop: 40,
     fontSize: 16,
     marginHorizontal: 40,
+  },
+  internetConnectionText: {
+    color: WHITE,
+    width: '100%',
+    backgroundColor: DARK_TEXT,
+    padding: 4,
+    textAlign: 'center',
   },
 });
