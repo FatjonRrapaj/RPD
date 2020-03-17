@@ -1,7 +1,7 @@
 # Recipe Puppy Demo App
 
 This is a simple app that uses [RecipePuppyApi](http://www.recipepuppy.com/about/api/) to fetch recipes into a list.
-This app onluy targets iOS.
+This app only targets iOS.
 
 ## Getting Started
 
