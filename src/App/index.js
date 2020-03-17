@@ -77,7 +77,7 @@ const App = () => {
         <Input
           placeholder={'Search for a recipe here, e.g Bread'}
           onChange={text => {
-            setSearchTerm(text);
+            setSearcgihTerm(text);
           }}
           onClearPressed={() => {
             setSearchTerm('');
