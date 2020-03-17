@@ -5,10 +5,10 @@ export default function debounce(value, delay) {
 
   useEffect(() => {
     const handler = setTimeout(() => {
-      setDebouncedValue(value);
+      setDebouncedValue(value); //the value will be returned only after the timer will completed
     }, delay);
     return () => {
-      clearTimeout(handler);
+      clearTimeout(handler); //the timer will be cleared before the component will unmount
     };
   }, [value]);
 
