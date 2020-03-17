@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StatusBar, View} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
-import NetInfo from '@react-native-community/netinfo';
 
 import {Input, List, Text} from '../components';
 import {getRecipeList} from '../api';
@@ -10,7 +9,6 @@ import {RED} from '../constants/colors';
 import styles from './styles';
 
 const App = () => {
-  const [isConnected, setIsConnected] = useState();
   const [searchTerm, setSearchTerm] = useState('');
   const [recipes, setRecipes] = useState([]);
   const debouncedSearchTerm = debounce(searchTerm, 500);
@@ -18,21 +16,10 @@ const App = () => {
   const [failedToGetInfo, setFailedToGetInfo] = useState(false);
 
   useEffect(() => {
-    const unsuscribe = NetInfo.addEventListener(state => {
-      setIsConnected(state.isConnected);
-    });
-    if (isConnected) {
-      getRecipes('Bread');
-    }
-    return () => {
-      unsuscribe();
-    };
+    getRecipes('Bread');
   }, []);
 
   useEffect(() => {
-    if (!isConnected) {
-      return;
-    }
     if (debouncedSearchTerm) {
       setIsSearching(true);
       getRecipes(debouncedSearchTerm);
@@ -88,9 +75,9 @@ const App = () => {
       <View style={styles.header}>
         <Text style={styles.title}>Recipe Puppy</Text>
         <Input
-          placeholder="Search for a recipe here, e.g Bread"
+          placeholder={'Search for a recipe here, e.g Bread'}
           onChange={text => {
-            setSearcgihTerm(text);
+            setSearchTerm(text);
           }}
           onClearPressed={() => {
             setSearchTerm('');
@@ -99,11 +86,6 @@ const App = () => {
           loading={isSearching}
         />
       </View>
-      {!isConnected && (
-        <Text style={styles.internetConnectionText}>
-          No Internet Connection
-        </Text>
-      )}
       <SafeAreaView style={styles.container}>{renderList()}</SafeAreaView>
     </>
   );
