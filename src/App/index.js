@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {SafeAreaView, StatusBar, View, Text} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 
-import {Input, List} from '../Components';
+import {Input, List} from '../components';
 import {getRecipeList} from '../api';
 import {debounce} from '../helpers';
 import styles from './styles';
