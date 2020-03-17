@@ -1,6 +1,7 @@
 # Recipe Puppy Demo App
 
-This is a simple app that uses Recipe Puppy Api to fetch recipes into a list.
+This is a simple app that uses [RecipePuppyApi](http://www.recipepuppy.com/about/api/) to fetch recipes into a list.
+This app onluy targets iOS.
 
 ## Getting Started
 
@@ -21,8 +22,8 @@ retrieving the network connection state in iOS emulator, you will need to run th
 
 ## IOS
 
-Run `pod install` inside this project's iOS directory when running the project from master.
-Run `cd ios && pod install && cd .. && react-native link && react-native run-ios` again when switching across branches.
+- Run `pod install` inside this project's iOS directory than run `react-native run-ios` inside project's when running the project from the **master**.
+- Run `cd ios && pod install && cd .. && react-native link && react-native run-ios` again when switching across branches.
 
 ## Dependencies
 
