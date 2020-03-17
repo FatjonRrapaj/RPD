@@ -92,6 +92,9 @@ const App = () => {
           onChange={text => {
             setSearchTerm(text);
           }}
+          onClearPressed={() => {
+            setSearchTerm('');
+          }}
           value={searchTerm}
           loading={isSearching}
         />

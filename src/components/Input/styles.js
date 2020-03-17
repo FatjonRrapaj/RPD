@@ -25,4 +25,10 @@ export default StyleSheet.create({
     right: 30,
     top: 10 + 20 + 5, //input padding top + margin top + 1/2 activity indicator height === centered
   },
+  cancelContainer: {
+    padding: 4,
+    position: 'absolute',
+    right: 30,
+    top: 10 + 20 + 4, //input padding top + margin top + 1/2 image size
+  },
 });

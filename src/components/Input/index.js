@@ -1,9 +1,22 @@
 import React from 'react';
-import {View, TextInput, ActivityIndicator} from 'react-native';
+import {
+  View,
+  TextInput,
+  ActivityIndicator,
+  TouchableOpacity,
+  Image,
+} from 'react-native';
 
 import styles from './styles';
+import {cancel} from '../../../assets/img';
 
-const Input = ({placeholder, onChange, value, loading = false}) => (
+const Input = ({
+  placeholder,
+  onChange,
+  value,
+  loading = false,
+  onClearPressed = () => {},
+}) => (
   <View style={styles.container}>
     <TextInput
       placeholder={placeholder}
@@ -12,6 +25,11 @@ const Input = ({placeholder, onChange, value, loading = false}) => (
       value={value}
       style={styles.input}
     />
+    {value.length > 0 && !loading && (
+      <TouchableOpacity onPress={onClearPressed} style={styles.cancelContainer}>
+        <Image source={cancel} />
+      </TouchableOpacity>
+    )}
     {loading && (
       <View style={styles.indicatorContainer}>
         <ActivityIndicator size={20} />
