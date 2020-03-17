@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
 
 import Text from '../../Text';
-import {arrow, recipe} from '../../../../assets/img/';
+import {arrow, recipe} from '../../../../assets/img';
 import styles from './styles';
 
 function randomGen() {
