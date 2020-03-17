@@ -3,7 +3,7 @@ import {SafeAreaView, StatusBar, View} from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import NetInfo from '@react-native-community/netinfo';
 
-import {Input, List, Text} from '../Components';
+import {Input, List, Text} from '../components';
 import {getRecipeList} from '../api';
 import {debounce} from '../helpers';
 import {RED} from '../constants/colors';
