@@ -28,7 +28,7 @@ export default StyleSheet.create({
   cancelContainer: {
     padding: 4,
     position: 'absolute',
-    top: 0,
-    bottom: 0,
+    right: 30,
+    top: 10 + 20 + 4, //input padding top + margin top + 1/2 image size
   },
 });
