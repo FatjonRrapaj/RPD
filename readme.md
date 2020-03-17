@@ -23,7 +23,7 @@ retrieving the network connection state in iOS emulator, you will need to run th
 ## IOS
 
 - Run `pod install` inside this project's iOS directory than run `react-native run-ios` inside project's when running the project from **master** branch.
-- Run `cd ios && pod install && cd .. && react-native link && react-native run-ios` again when switching across branches.
+- Run `cd ios && pod install && cd .. && react-native link && react-native run-ios` again when switching between branches.
 
 ## Dependencies
 
